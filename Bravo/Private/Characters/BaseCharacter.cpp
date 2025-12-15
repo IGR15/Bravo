@@ -3,32 +3,24 @@
 
 #include "Characters/BaseCharacter.h"
 
+#include "Components/CapsuleComponent.h"
+
 // Sets default values
 ABaseCharacter::ABaseCharacter()
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
-}
-
-// Called when the game starts or when spawne
-void ABaseCharacter::BeginPlay()
-{
-	Super::BeginPlay();
+	PrimaryActorTick.bCanEverTick = false;
 	
+	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Camera,ECR_Ignore);
+	GetCapsuleComponent()->SetGenerateOverlapEvents(false);
+	GetMesh()->SetCollisionResponseToChannel(ECC_Camera,ECR_Ignore);
+	GetMesh()->SetGenerateOverlapEvents(true);
+
 }
 
-// Called every frame
-void ABaseCharacter::Tick(float DeltaTime)
+UAbilitySystemComponent* ABaseCharacter::GetAbilitySystemComponent() const
 {
-	Super::Tick(DeltaTime);
-
+	return AbilitySystemComponent;
 }
 
-// Called to bind functionality to input
-void ABaseCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-}
 
