@@ -19,7 +19,12 @@ ABaseCharacter::ABaseCharacter()
 
 UAbilitySystemComponent* ABaseCharacter::GetAbilitySystemComponent() const
 {
-	return AbilitySystemComponent;
+	return nullptr;
+}
+
+void ABaseCharacter::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 }
 
 
