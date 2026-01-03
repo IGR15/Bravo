@@ -2,6 +2,7 @@
 
 
 #include "GAS/B_AbilitySystemComponent.h"
+#include "BTags.h"
 
 
 // Sets default values for this component's properties
@@ -59,7 +60,7 @@ void UB_AbilitySystemComponent::HandleAutoActivateAbilities(const FGameplayAbili
 {
 	for (const FGameplayTag& Tag: AbilitySpec.Ability->GetAssetTags())
 	{
-		if (Tag.MatchesTagExact(LTTags::LTAbilities::ActivateOnGiven))
+		if (Tag.MatchesTagExact(BTags::LTAbilities::ActivateOnGiven))
 		{
 			TryActivateAbility(AbilitySpec.Handle);
 			return;
