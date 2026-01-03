@@ -13,15 +13,19 @@ class BRAVO_API UB_AbilitySystemComponent : public UAbilitySystemComponent
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this component's properties
 	UB_AbilitySystemComponent();
 
-protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
 
-public:
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
-	                           FActorComponentTickFunction* ThisTickFunction) override;
+	virtual void OnGiveAbility(FGameplayAbilitySpec& AbilitySpec) override;
+
+	virtual void OnRep_ActivateAbilities() override;
+
+	UFUNCTION(BlueprintCallable,Category="GT|Abilities")
+	void SetAbilityLevel(TSubclassOf<UGameplayAbility>AbilityClass,int32 Level);
+
+	UFUNCTION(BlueprintCallable,Category="GT|Abilities")
+	void AddToAbilityLevel(TSubclassOf<UGameplayAbility>AbilityClass,int32 Level=1);
+
+private:
+	void HandleAutoActivateAbilities(const FGameplayAbilitySpec& AbilitySpec);
 };
