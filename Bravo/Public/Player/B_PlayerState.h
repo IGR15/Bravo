@@ -17,4 +17,15 @@ UCLASS()
 class BRAVO_API AB_PlayerState : public APlayerState, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
+public:
+	AB_PlayerState();
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+
+	UAttributeSet* GetAttributeSet()const{return AttributeSet;}
+private:
+	UPROPERTY(VisibleAnywhere,Category="GT|Abilities")
+	TObjectPtr<UAbilitySystemComponent>AbilitySystemComponent;
+
+	UPROPERTY()
+	TObjectPtr<UAttributeSet> AttributeSet;
 };
