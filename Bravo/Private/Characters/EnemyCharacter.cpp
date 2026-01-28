@@ -45,6 +45,8 @@ UAttributeSet* AEnemyCharacter::GetAttributeSet() const
 	return AttributeSet;
 }
 
+
+
 // Called when the game starts or when spawned
 void AEnemyCharacter::BeginPlay()
 {
